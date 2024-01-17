@@ -3,10 +3,27 @@ package com.allyson.cursojava.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+// As anotations é para indicar ao jpa como transformar o objeto em banco de dados
+
+
+@Entity
+@Table(name="tb_user")
+// @Table é para mudar o nome da tabela para tb_user, pois o h2 tem uma palavra reservada user
+
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
+	// As anotações acima é para indicar pk, e para gerar auto increment na tabela.
 	private Integer id;
 	private String name;
 	private String email;
